@@ -1,0 +1,5 @@
+#posts {
+    background-image: url(../createpostbg.png);
+    z-index: 1;
+    background-size: cover;
+}

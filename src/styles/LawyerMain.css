@@ -1,0 +1,33 @@
+.row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+#complain {
+    text-align: center;
+}
+#complain h1{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+#complain form{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+#main {
+    background-image: url(../images/backlawyer.png);
+    z-index: 1;
+    background-size: cover;
+}
+
+
+
+
+
