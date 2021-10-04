@@ -6,6 +6,7 @@ export const AuthContext = createContext({});
 
 const AuthProvider = ({children}) => {
   const [ loggedIn, setLoggedIn] = useState(false);
+  const apiUrl = process.env.REACT_APP_API_URL;
   // const [admin, setAdmin] = useState(false);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({
@@ -25,13 +26,13 @@ const AuthProvider = ({children}) => {
   
   const getAllUsers = async (user) => {
     // .env file missing -> add REACT_APP_API_URL
-    const response = await axios.get('http://localhost:5000/api/auth');
+    const response = await axios.get(apiUrl + '/auth');
     setUsers(response.data);
   }
 
   const loginUser = async (user) => {
 
-    const response = await axios.post('http://localhost:5000/api/auth/login', user);
+    const response = await axios.post(apiUrl +  '/auth/login', user);
     const { data } = response;
     console.log(data);
     setUser(data.user);

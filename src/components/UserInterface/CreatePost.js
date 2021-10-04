@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 function CreatePost() {
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [newpost, setNewPost] = useState({
         title: '',
@@ -27,7 +28,7 @@ function CreatePost() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:5000/api/posts/post', newpost);
+        axios.post(apiUrl + '/posts/post', newpost);
         setNewPost({
             title: '',
             description: ''

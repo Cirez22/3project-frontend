@@ -4,9 +4,10 @@ import axios from 'axios';
 
 function MyPosts() {
     const [posts, setPosts] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(async () => {
-        const response = await axios.get("http://localhost:5000/api/posts");
+        const response = await axios.get(apiUrl + '/posts');
         setPosts(response.data);
     }, [])
 
