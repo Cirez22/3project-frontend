@@ -1,21 +1,20 @@
-import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { PostContext } from '../../context/PostContext';
 
 
 
 function CreatePost() {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    
+    const {createPost} = useContext(PostContext) 
+
 
     const [newpost, setNewPost] = useState({
         title: '',
         description: ''
     });
 
-    useEffect(() => {
-
-    }, [])
+    
 
     const handleChange = (event) => {
         console.log(newpost)
@@ -27,8 +26,7 @@ function CreatePost() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios.post(apiUrl + '/posts/post', newpost);
+        createPost(newpost);
         setNewPost({
             title: '',
             description: ''

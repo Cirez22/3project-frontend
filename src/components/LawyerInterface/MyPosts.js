@@ -12,13 +12,14 @@ function MyPosts() {
     }, [])
 
     return (
-        <div className='container'>
+        <div id="post" className='container'>
             <div className="row my-10">
                 {
                     //map here
                     posts.map (post => (
                         <div key={post._id} className="col"style={{margin:'20px'}}>
                             <PostCard obj={post}/>
+                            
                         </div>  
                     ))
                 }

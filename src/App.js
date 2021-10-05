@@ -32,14 +32,14 @@ function App() {
           </>
         ) : (
           <>
-            {/* <Route exact path="**" component={HomeView} /> */}
             <Route exact path="/" component={HomeView} />
+            {/* <Route exact path="**" component={HomeView} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="**" component={ErrorView} />
 
           </>
         )}
+        <Route exact path="**" component={ErrorView} />
         </Switch>
       </BrowserRouter>
     </div>

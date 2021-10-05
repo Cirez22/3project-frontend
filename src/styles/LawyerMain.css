@@ -23,7 +23,6 @@
 }
 #main {
     background-image: url(../images/backlawyer.png);
-    z-index: 1;
     background-size: cover;
 }
 

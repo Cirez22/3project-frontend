@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../styles/Main.css"
+import "../../styles/LawyerMain.css"
 
 function Main() {
     return (
