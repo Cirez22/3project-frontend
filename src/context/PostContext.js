@@ -11,7 +11,6 @@ const PostProvider = ({ children }) => {
 
 
   useEffect(() => {
-    getPost();
     getAllPosts();
   }, [])
 

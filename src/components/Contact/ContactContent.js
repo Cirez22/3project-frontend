@@ -7,7 +7,7 @@ function ContactContent() {
         <div id="contact">
 
             <div className="contact-clean">
-                <form onsubmit="return false;">
+                <form>
                     <h2 className="text-center">Contact us</h2>
                     <div className="form-group"><input className="form-control" type="text" name="name" placeholder="Name" /></div>
                     <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
