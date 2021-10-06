@@ -10,9 +10,12 @@ function PostCard({ obj }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios.post(apiUrl + '/posts/post/:id', bid);
+        axios.put(apiUrl + `/posts/post/${obj._id}`, { bid });
+        setBid(0);
+        alert('sent');
     }
+
+
 
     // TODO: OnClick call api updatePost and update Bid Number
     // On the user interface, if (bid ? display 'accept' or 'decline : dont' show buttons)
@@ -22,22 +25,26 @@ function PostCard({ obj }) {
                 <div className="card-body">
                     <h5 className="card-title">{obj.title}</h5>
                     <p className="card-text">{obj.description}</p>
-                    <input 
+                    {/* Conditional Rendering */}
+
+                    <input
                         value={bid}
                         name="bid"
                         onChange={(e) => setBid(e.target.value)}
-                        type="number" 
-                        className="form-control" 
-                        aria-label="Amount (to the nearest dollar)" 
-                        placeholder="Insert Bid" 
+                        type="number"
+                        className="form-control"
+                        aria-label="Amount (to the nearest dollar)"
+                        placeholder="Insert Bid"
                     />
-                    <button 
-                        onClick={handleSubmit} 
-                        type="submit" 
-                        className="btn btn-outline-primary position-relative" 
+
+                    <button
+                        onClick={handleSubmit}
+                        type="submit"
+                        className="btn btn-outline-primary position-relative"
                         style={{ marginTop: "10px" }}>
                         Submit
                     </button>
+
                 </div>
             </div>
         </div>
