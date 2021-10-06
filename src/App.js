@@ -9,7 +9,7 @@ import Main from "./components/UserInterface/Main";
 import LawyerInterface from "./views/LawyerInterface";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import ErrorView from "./views/ErrorView";
+// import ErrorView from "./views/ErrorView";
 
 
 
@@ -39,7 +39,7 @@ function App() {
 
           </>
         )}
-        <Route exact path="**" component={ErrorView} />
+        {/* <Route exact path="**" component={ErrorView} /> */}
         </Switch>
       </BrowserRouter>
     </div>
