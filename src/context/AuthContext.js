@@ -9,14 +9,7 @@ const AuthProvider = ({children}) => {
   const apiUrl = process.env.REACT_APP_API_URL;
   // const [admin, setAdmin] = useState(false);
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: '',
-    google: false,
-    facebook: false,
-  })
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     isAdmin();
@@ -40,6 +33,20 @@ const AuthProvider = ({children}) => {
     setLoggedIn(true);
     isAdmin();
   }
+
+  const signUpUser = async (user) => {
+      try {
+        const response = await  apiHelper.post('/auth/signup', user);
+        const {data} = response;
+        setUser(data.user);
+        localStorage.setItem('jwtreservespot', JSON.stringify({user_role:data.user.role, token:data.token}));
+        setLoggedIn(true);
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
+
 
   const checkLogged = () => {
     const tokenValue = localStorage.getItem('jwtreservespot');
@@ -66,6 +73,7 @@ const AuthProvider = ({children}) => {
         setUser,
         loginUser,
         logOutUser,
+        signUpUser
       }}
     >
       {children}
