@@ -27,11 +27,10 @@ const AuthProvider = ({children}) => {
 
     const response = await axios.post(apiUrl +  '/auth/login', user);
     const { data } = response;
-    console.log(data);
-    setUser(data.user);
     localStorage.setItem('jwtreservespot', JSON.stringify({user: data.user, token: data.token}));
     setLoggedIn(true);
     isAdmin();
+    return data
   }
 
   const signUpUser = async (user) => {
@@ -55,8 +54,6 @@ const AuthProvider = ({children}) => {
 
   const isAdmin = () => {
     const token = JSON.parse(localStorage.getItem('jwtreservespot'));
-    console.log("USER", token);
-
   }
 
   const logOutUser = () => {

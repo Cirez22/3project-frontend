@@ -1,47 +1,38 @@
 import React, { useContext,useState } from 'react';
-import { Link } from 'react-router-dom'
 import { AuthContext } from "../../context/AuthContext";
 
 
 import "../../styles/Post.css"
 
 import { useHistory } from 'react-router';
-// import { loginUserToApi } from '../../services/authService'
 
 
 function TextLogin() {
 
   const history = useHistory();
   const {loginUser} = useContext(AuthContext)
-  const [user, setUser] = useState({
+  const [user, logUser] = useState({
     email: '',
-    password: ''
+    password: '',
+    role:''
   });
 
   const handleChange = (event) => {
-    setUser({
+    logUser({
       ...user,
       [event.target.name]: event.target.value
     })
   }
 
-  const handleSubmit =  (event) => {
+  const handleSubmit = async  (event) => {
     event.preventDefault();
-    loginUser(user)
-    setUser({
-      email: '',
-      password: ''
-    })
-    history.push('/userinterface')
-
-
-
-    // if user.role == 'USER' history.push to user view
-    // else history.push to user admin
-
-    // window.location.reload();
-    
-    // history.push('/')
+    const data = await loginUser(user)
+    console.log(data)
+    if (data.user.role === 'USER') {
+      history.push('/userinterface')
+    } else {
+      history.push('/lawyerinterface');
+    }
   }
 
 
@@ -67,13 +58,13 @@ function TextLogin() {
                           <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
                             <input 
+                              value={user.email}
+                              name="email"
                               type="email" 
                               id="form3Example1c" 
                               className="form-control"
                               placeholder="Email"
-                              value={user.email}
                               onChange={handleChange}
-                              name="email"
                             />
                           </div>
                         </div>
@@ -82,22 +73,22 @@ function TextLogin() {
                           <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
                             <input
+                              value={user.password}
                               type="password"
                               id="form3Example4c"
                               className="form-control"
                               placeholder="Password"
-                              value={user.password}
                               onChange={handleChange}
                               name="password"
                             />
                           </div>
                         </div>
 
-                        <Link to="/userdash">
+                      
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                             <button onClick={handleSubmit} type="button" className="btn btn-primary btn-lg">Login</button>
                           </div>
-                        </Link>
+                       
                       </form>
 
                     </div>

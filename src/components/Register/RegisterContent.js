@@ -30,7 +30,6 @@ function RegisterContent() {
     event.preventDefault();
     signUpUser(user)
     if (user.role ==='USER') {
-      alert('user')
       history.push('/userinterface');
     } else {
       history.push('/lawyerinterface')
